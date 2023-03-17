@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import UserContext from "../context/UserContext";
 import axios from "axios";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
@@ -100,6 +100,11 @@ function User() {
 
   return (
     <UserInfoContainer>
+      <AnContainer>
+        <FirstDiv></FirstDiv>
+        <SecondDiv></SecondDiv>
+        <ThirdDiv></ThirdDiv>
+      </AnContainer>
       <UserContainer key={user?.id}>
         <UserImg src={user?.imageUrl} />
         <FieldSetContainer>
@@ -140,14 +145,10 @@ function User() {
             <p>State:</p>
             <UserInfoParagraph>{user?.address.state}</UserInfoParagraph>
           </InfoSubContainer>
-          <InfoSubContainer>
-            <p>Street Adress:</p>
-            <UserInfoParagraph>{user?.address.streetAddress}</UserInfoParagraph>
-          </InfoSubContainer>
-          <InfoSubContainer>
-            <p>Zip:</p>
-            <UserInfoParagraph>{user?.address.zipCode}</UserInfoParagraph>
-          </InfoSubContainer>
+          <AdressContainer>
+            <p>Street Adress: {user?.address.streetAddress}</p>
+          </AdressContainer>
+          <ZipInfoContainer>Zip:{user?.address.zipCode}</ZipInfoContainer>
         </RightFieldset>
       </UserContainer>
       <FriendLinks>
@@ -189,7 +190,9 @@ const UserInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 1200px;
-  border: 1px solid #0b0b0b;
+  border: 1px solid #ccc;
+  padding: 40px 15px 0px 15px;
+  overflow: hidden;
 `;
 
 const LinkDiv = styled.div`
@@ -206,38 +209,42 @@ const Container = styled.div`
   width: 1200px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
-  overflow: scroll;
-  overflow-y: scroll;
+  overflow: hidden;
 `;
 const UserContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   justify-content: center;
-  width: 1158px;
+  width: 1200px;
+  gap: 10px;
+  overflow: hidden;
 `;
 
 const FieldSetContainer = styled.fieldset`
   height: 211px;
+  width: 647px;
   gap: 5px;
   border-color: rgb(192, 192, 192);
-  padding: 0px;
+  padding-left: 10px;
   margin-top: 0px;
 `;
 
 const UserImg = styled.img`
   width: 266px;
   height: 200px;
+  margin-top: 10px;
 `;
 
 const InfoSubContainer = styled.div`
   display: flex;
   gap: 5px;
   overflow-wrap: break-word;
-  height: 30px;
+  margin: 0px;
+  height: 25px;
 `;
 const RightFieldset = styled.fieldset`
-  width: 164px;
-  height: 215px;
+  width: 191px;
+  height: 220px;
 `;
 const UserInfoParagraph = styled.p`
   overflow-wrap: break-word;
@@ -252,4 +259,57 @@ const ItemContainer = styled.div`
 const ItemImg = styled.img`
   width: 285px;
   height: 208px;
+`;
+const AdressContainer = styled.div`
+  height: 43px;
+`;
+const ZipInfoContainer = styled.div`
+  margin-bottom: 10px;
+`;
+
+const AnContainer = styled.div`
+  display: flex;
+  widht: 60px;
+  height: 70px;
+  gap: 3px;
+
+  position: relative;
+`;
+
+const rotate = keyframes`
+0%{
+    top:15px;
+    height:64px;
+}
+50%, 100%{
+    top:30px;
+    height:32px;
+}`;
+
+const FirstDiv = styled.div`
+  width: 16px;
+
+  background-color: #006400;
+  animation: ${rotate} 1s infinite;
+  position: absolute;
+  animation-delay: -0.24s;
+  top: 0px;
+`;
+const SecondDiv = styled.div`
+  width: 16px;
+  height: 32px;
+  background-color: #006400;
+  position: absolute;
+  animation: ${rotate} 1s infinite;
+  animation-delay: -0.12s;
+  left: 20px;
+`;
+const ThirdDiv = styled.div`
+  width: 16px;
+  height: 32px;
+  background-color: #006400;
+  animation: ${rotate} 1s infinite;
+  animation-delay: -0.6s;
+  position: absolute;
+  left: 40px;
 `;
