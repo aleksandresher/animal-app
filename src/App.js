@@ -3,6 +3,7 @@ import User from "./Pages/User";
 import { Routes, Route } from "react-router-dom";
 import UserContext from "./context/UserContext";
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [value, setValue] = useState({ id: 1 });
