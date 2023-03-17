@@ -4,6 +4,25 @@ import styled from "styled-components";
 import UserContext from "../context/UserContext";
 
 function Home() {
+  //   const [items, setItems] = useState([
+  //     { id: 1, name: "Item 1" },
+  //     { id: 2, name: "Item 2" },
+  //     { id: 3, name: "Item 3" },
+  //   ]);
+
+  //   const updateItem = (itemId, newName) => {
+  //     // Create a new array with the updated object
+  //     const updatedItems = items.map((item) => {
+  //       if (item.id === itemId) {
+  //         return { ...item, id: itemId, name: item.name };
+  //       }
+  //       return item;
+  //     });
+
+  //     // Update the state with the new array
+  //     setItems(updatedItems);
+  //   };
+
   const { value, setValue } = useContext(UserContext);
   const [users, setUsers] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -59,6 +78,12 @@ function Home() {
   }
   return (
     <div>
+      {/* {items.map((item) => ( */}
+      {/* //     <div key={item.id}>
+    //       <p>{item.name}</p>
+    //       <button onClick={() => updateItem(item.id)}>Update</button>
+    //     </div> */}
+      {/* //   ))} */}
       <Container>
         {users?.map(({ id, name, lastName, prefix, title, imageUrl }) => (
           <ItemContainer key={id} onClick={() => navigateAndId(id)}>

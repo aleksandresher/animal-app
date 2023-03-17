@@ -12,7 +12,7 @@ function App() {
       <UserContext.Provider value={{ value, setValue }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/user" element={<User />} />
+          <Route path={`user/:${value.id}`} element={<User />} />
         </Routes>
       </UserContext.Provider>
     </div>
