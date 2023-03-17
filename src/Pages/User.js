@@ -10,16 +10,8 @@ function User() {
   const [user, setUser] = useState();
   const [error, setError] = useState();
   const [friends, setFriends] = useState([]);
-  const [num, setNum] = useState(null);
   const [inintialFriends, setInitialFriends] = useState([]);
-  const [previousPath, setPreviousPath] = useState(null);
-  const location = useLocation();
   const [items, setItems] = useState([]);
-  // console.log(user);
-
-  const [friendLink, setFriendLink] = useState([]);
-  console.log(friendLink);
-
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
 
@@ -27,20 +19,9 @@ function User() {
 
   const elementRef = useRef(null);
 
-  function navigateAndId(userId, friend) {
+  function navigateAndId(userId) {
     navigate(`/user/${userId}`);
     setValue({ id: userId });
-    // const newArray = [...items, ...friend];
-    // setItems(newArray);
-
-    // let newObj = friend;
-    // const newArray = [...items, newObj];
-    // setItems(newArray);
-
-    // fetchMoreItems();
-    // getMore();
-    help(userId);
-    console.log(value);
   }
 
   function onIntersection(entries) {
@@ -115,46 +96,8 @@ function User() {
     }
   }
 
-  function help(id) {
-    axios
-      .get(
-        `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${id}`
-      )
-      .then((res) => {
-        setFriendLink(res.data.list);
-        // setFriendLink((prev) => prev?.prev.push(res.data));
-      })
-      .catch((err) => {
-        setError(err);
-      });
-  }
-
-  //   function getMore() {
-  //     setFriendLink((prev) => [...prev, user]);
-  //   }
-
   console.log(items);
 
-  //   const [items, setItems] = useState({user?.map((user) => {
-  //     id: user.id, name: user.name
-  //   })})
-
-  //   const updateItem = (itemId, newName) => {
-  //     // Create a new array with the updated object
-  //     const updatedItems = items.map((item) => {
-  //       if (item.id === itemId) {
-  //         return { ...item, id: itemId, name: item.name };
-  //       }
-  //       return item;
-  //     });
-
-  //     // Update the state with the new array
-  //     setItems(updatedItems);
-  //   };
-
-  //   const updateItems = (item) => {
-  //     setItems(item);
-  //   };
   return (
     <UserInfoContainer>
       <UserContainer key={user?.id}>
@@ -209,12 +152,13 @@ function User() {
       </UserContainer>
       <FriendLinks>
         <LinkDiv>
-          {items?.map(({ id, name, lastName }) => (
-            <div key={id}>
-              <a href={`/user/${id}`}>
+          {items?.map(({ id, name, lastName, prefix, idx }) => (
+            <div key={idx}>
+              <p onClick={() => setValue({ id: id })} key={idx}>
+                {prefix}
                 {name}
                 {lastName}
-              </a>
+              </p>
             </div>
           ))}
         </LinkDiv>

@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path={`user/:${value.id}`} element={<User />} />
+          {/* <Route path="/user" element={<User />} /> */}
         </Routes>
       </UserContext.Provider>
     </div>
