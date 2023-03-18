@@ -150,11 +150,9 @@ function User() {
         <LinkDiv>
           {items?.map(({ id, name, lastName, prefix, idx }) => (
             <div key={idx}>
-              <p onClick={() => setValue({ id: id })} key={idx}>
-                {prefix}
-                {name}
-                {lastName}
-              </p>
+              <LinkTrack onClick={() => setValue({ id: id })} key={idx}>
+                {prefix} {name} {lastName}
+              </LinkTrack>
             </div>
           ))}
         </LinkDiv>
@@ -202,6 +200,8 @@ const UserInfoContainer = styled.div`
 const LinkDiv = styled.div`
   display: flex;
   gap: 15px;
+  width: 1200px;
+  max-width: 180ch;
 `;
 
 const FriendLinks = styled.div`
@@ -260,9 +260,8 @@ const UserImg = styled.img`
 `;
 
 const FriendImg = styled.img`
-  width: 266px;
+  width: 283px;
   height: 200px;
-  margin-top: 10px;
 
   @media (max-width: 450px) {
     width: 170px;
@@ -294,6 +293,7 @@ const ItemContainer = styled.div`
 
   cursor: pointer;
   border: 1px solid #ccc;
+  padding-bottom: 5px;
 
   @media (max-width: 450px) {
     width: 170px;
@@ -370,4 +370,7 @@ const ThirdDiv = styled.div`
   @media (max-width: 450px) {
     left: 210px;
   }
+`;
+const LinkTrack = styled.p`
+  overflow-wrap: break-word;
 `;
