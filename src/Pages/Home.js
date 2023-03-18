@@ -4,24 +4,7 @@ import styled, { keyframes } from "styled-components";
 import UserContext from "../context/UserContext";
 
 function Home() {
-  //   const [items, setItems] = useState([
-  //     { id: 1, name: "Item 1" },
-  //     { id: 2, name: "Item 2" },
-  //     { id: 3, name: "Item 3" },
-  //   ]);
 
-  //   const updateItem = (itemId, newName) => {
-  //     // Create a new array with the updated object
-  //     const updatedItems = items.map((item) => {
-  //       if (item.id === itemId) {
-  //         return { ...item, id: itemId, name: item.name };
-  //       }
-  //       return item;
-  //     });
-
-  //     // Update the state with the new array
-  //     setItems(updatedItems);
-  //   };
 
   const { value, setValue } = useContext(UserContext);
   const [users, setUsers] = useState([]);
