@@ -166,7 +166,7 @@ function User() {
             key={friend.id}
             onClick={() => navigateAndId(friend.id, friend)}
           >
-            <ItemImg src={friend.imageUrl} />
+            <FriendImg src={friend.imageUrl} />
             <p>
               {friend.prefix}. {friend.name} {friend.lastName}
             </p>
@@ -214,6 +214,12 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
   overflow: hidden;
+
+  @media (max-width: 450px) {
+    width: 400px;
+    gap: 5px;
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 const UserContainer = styled.div`
   display: grid;
@@ -222,6 +228,11 @@ const UserContainer = styled.div`
   width: 1200px;
   gap: 10px;
   overflow: hidden;
+
+  @media (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const FieldSetContainer = styled.fieldset`
@@ -231,12 +242,33 @@ const FieldSetContainer = styled.fieldset`
   border-color: rgb(192, 192, 192);
   padding-left: 10px;
   margin-top: 0px;
+
+  @media (max-width: 450px) {
+    width: 350px;
+  }
 `;
 
 const UserImg = styled.img`
   width: 266px;
   height: 200px;
   margin-top: 10px;
+
+  @media (max-width: 450px) {
+    width: 378px;
+    height: 300px;
+  }
+`;
+
+const FriendImg = styled.img`
+  width: 266px;
+  height: 200px;
+  margin-top: 10px;
+
+  @media (max-width: 450px) {
+    width: 170px;
+    height: 120px;
+    margin-top: 0px;
+  }
 `;
 
 const InfoSubContainer = styled.div`
@@ -249,6 +281,10 @@ const InfoSubContainer = styled.div`
 const RightFieldset = styled.fieldset`
   width: 191px;
   height: 220px;
+
+  @media (max-width: 450px) {
+    width: 350px;
+  }
 `;
 const UserInfoParagraph = styled.p`
   overflow-wrap: break-word;
@@ -258,6 +294,12 @@ const ItemContainer = styled.div`
 
   cursor: pointer;
   border: 1px solid #ccc;
+
+  @media (max-width: 450px) {
+    width: 170px;
+    height: 220px;
+    padding-bottom: 5px;
+  }
 `;
 
 const ItemImg = styled.img`
@@ -300,6 +342,9 @@ const FirstDiv = styled.div`
   animation-delay: -0.24s;
   top: 0px;
   left: 600px;
+  @media (max-width: 450px) {
+    left: 170px;
+  }
 `;
 const SecondDiv = styled.div`
   width: 16px;
@@ -309,6 +354,9 @@ const SecondDiv = styled.div`
   animation: ${rotate} 1s infinite;
   animation-delay: -0.12s;
   left: 620px;
+  @media (max-width: 450px) {
+    left: 190px;
+  }
 `;
 const ThirdDiv = styled.div`
   width: 16px;
@@ -318,4 +366,8 @@ const ThirdDiv = styled.div`
   animation-delay: -0.6s;
   position: absolute;
   left: 640px;
+
+  @media (max-width: 450px) {
+    left: 210px;
+  }
 `;

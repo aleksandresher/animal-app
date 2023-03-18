@@ -116,6 +116,11 @@ const Container = styled.div`
   width: 1200px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   overflow-y: hidden;
+
+  @media (max-width: 450px) {
+    width: 400px;
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const ItemContainer = styled.div`
@@ -124,11 +129,20 @@ const ItemContainer = styled.div`
   cursor: pointer;
   border: 1px solid #ccc;
   padding-bottom: 5px;
+
+  @media (max-width: 450px) {
+    width: 170px;
+    height: 200px;
+  }
 `;
 
 const ItemImg = styled.img`
   width: 285px;
   height: 208px;
+  @media (max-width: 450px) {
+    width: 170px;
+    height: 100px;
+  }
 `;
 
 const AnContainer = styled.div`
@@ -159,7 +173,11 @@ const FirstDiv = styled.div`
   position: absolute;
   animation-delay: -0.24s;
   top: 0px;
-  left: 600px;
+  left: 580px;
+
+  @media (max-width: 450px) {
+    left: 170px;
+  }
 `;
 const SecondDiv = styled.div`
   width: 16px;
@@ -168,7 +186,11 @@ const SecondDiv = styled.div`
   position: absolute;
   animation: ${rotate} 1s infinite;
   animation-delay: -0.12s;
-  left: 620px;
+  left: 600px;
+
+  @media (max-width: 450px) {
+    left: 190px;
+  }
 `;
 const ThirdDiv = styled.div`
   width: 16px;
@@ -177,5 +199,9 @@ const ThirdDiv = styled.div`
   animation: ${rotate} 1s infinite;
   animation-delay: -0.6s;
   position: absolute;
-  left: 640px;
+  left: 620px;
+
+  @media (max-width: 450px) {
+    left: 210px;
+  }
 `;
