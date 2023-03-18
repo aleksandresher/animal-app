@@ -64,7 +64,7 @@ function User() {
   useEffect(() => {
     axios
       .get(
-        `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${value.id}/friends/${page}/10`
+        `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${value.id}/friends/${page}/12`
       )
       .then((res) => {
         setInitialFriends(res.data.list);
@@ -77,7 +77,7 @@ function User() {
   async function fetchMoreItems() {
     try {
       const response = await fetch(
-        `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${value.id}/friends/${page}/10`
+        `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com/user/${value.id}/friends/${page}/12`
       );
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -100,11 +100,6 @@ function User() {
 
   return (
     <UserInfoContainer>
-      <AnContainer>
-        <FirstDiv></FirstDiv>
-        <SecondDiv></SecondDiv>
-        <ThirdDiv></ThirdDiv>
-      </AnContainer>
       <UserContainer key={user?.id}>
         <UserImg src={user?.imageUrl} />
         <FieldSetContainer>
@@ -178,8 +173,17 @@ function User() {
             <p>{friend.title}</p>
           </ItemContainer>
         ))}
-        {hasMore && <div ref={elementRef}>load more Items</div>}
       </Container>
+      {hasMore && (
+        <div ref={elementRef}>
+          {" "}
+          <AnContainer>
+            <FirstDiv></FirstDiv>
+            <SecondDiv></SecondDiv>
+            <ThirdDiv></ThirdDiv>
+          </AnContainer>
+        </div>
+      )}
     </UserInfoContainer>
   );
 }
@@ -269,7 +273,8 @@ const ZipInfoContainer = styled.div`
 
 const AnContainer = styled.div`
   display: flex;
-  widht: 60px;
+  justify-content: center;
+  widht: 1200px;
   height: 70px;
   gap: 3px;
 
@@ -294,6 +299,7 @@ const FirstDiv = styled.div`
   position: absolute;
   animation-delay: -0.24s;
   top: 0px;
+  left: 600px;
 `;
 const SecondDiv = styled.div`
   width: 16px;
@@ -302,7 +308,7 @@ const SecondDiv = styled.div`
   position: absolute;
   animation: ${rotate} 1s infinite;
   animation-delay: -0.12s;
-  left: 20px;
+  left: 620px;
 `;
 const ThirdDiv = styled.div`
   width: 16px;
@@ -311,5 +317,5 @@ const ThirdDiv = styled.div`
   animation: ${rotate} 1s infinite;
   animation-delay: -0.6s;
   position: absolute;
-  left: 40px;
+  left: 640px;
 `;
